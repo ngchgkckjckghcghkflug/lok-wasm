@@ -48,7 +48,7 @@ jobs:
       run: |
         ls 
         cd scripts
-        ./scripts/build
+        ./build
         ls 
     
       env:
