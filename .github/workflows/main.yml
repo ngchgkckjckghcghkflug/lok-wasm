@@ -44,6 +44,10 @@ jobs:
       run: |
         pwd
         ./scripts/setup
+    - name: build
+      run: |
+        ./scripts/build
+        ls
     
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
