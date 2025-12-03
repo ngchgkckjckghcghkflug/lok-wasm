@@ -15,7 +15,7 @@ if [[ "$container" = "podman" ]]; then
 else
   source "./emsdk/emsdk_env.sh"
 fi
-cd "$BASE_DIR/libreoffice-core"
+cd "./libreoffice-core"
 echo "Building LOK"
 make || exit 1
 if [ "$GITHUB_ACTIONS" = "true" ]; then
