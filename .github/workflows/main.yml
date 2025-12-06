@@ -46,7 +46,9 @@ jobs:
         ./scripts/setup
     - name: build
       run: |
-        ls
+        cd libreoffice-core
+        ./autogen.sh 
+        cd ..
         ./scripts/build
         ls
     
