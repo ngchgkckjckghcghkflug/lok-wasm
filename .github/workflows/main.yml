@@ -46,10 +46,33 @@ jobs:
         ./scripts/setup
         ./scripts/configure
         
-    - name: build
+    - name: Build
       run: |
         ./scripts/build
         ls
-    
+    - name: Package
+      run: |
+        cd libreoffice-core
+        # Create complete package
+        mkdir -p build
+        
+        echo "Copying full LibreOffice installation..."
+        cp -r instdir/* build/
+        
+        # Create archive
+        echo "=== Creating archive ==="
+        tar -czf lok.tar.gz build/
+        
+        # Show final sizes
+        echo "=== Final package size ==="
+        ls -lh lok.tar.gz
+        sha256sum lok.tar.gz
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: lok-wasm
+        path: libreoffice-core/lok.tar.gz
+        retention-days: 30
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
