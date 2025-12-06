@@ -44,11 +44,10 @@ jobs:
       run: |
         pwd
         ./scripts/setup
+        ./scripts/configure
+        
     - name: build
       run: |
-        cd libreoffice-core
-        ./autogen.sh 
-        cd ..
         ./scripts/build
         ls
     
